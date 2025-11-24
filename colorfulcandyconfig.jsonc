@@ -1,0 +1,154 @@
+{
+    "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
+    "logo": {
+      "padding": {
+        "top": 2
+      }
+    },
+    "display": {
+      "separator": "",
+      "constants": [
+        // CONSTANT {$1} - COLOR BACKGROUND FOR KEY
+        "\u001b[48;2;0;0;0m",
+        // CONSTANT {$2} - COLOR BACKGROUND FOR OUTPUT
+        "\u001b[00;0;0;0;00m",
+        // CONSTANT {$3} - VERTICAL BARS AT START AND 75th CHARACTERS FORWARD AND BACKWARD Green
+        "\u001b[92m│                                                            │\u001b[60D\u001b[39m",
+        // CONSTANT {$4} - VERTICAL BARS AT START AND 75th CHARACTERS FORWARD AND BACKWARD Magenta
+        "\u001b[95m│                                                            │\u001b[60D\u001b[39m",
+
+      ]
+    },
+    "modules": [
+      // CUSTOM - Top UI bar
+      {
+        "type": "custom",
+        "key": "{$1}{#92}╭─────────────╮",
+        "format": "{$2}{#92}╭────────────────────────────────────────────────────────────╮",
+      },
+      {
+        "type": "users",
+        "key": "{#92}{$1}│ {#92}Users       {#92}│",
+        "myselfOnly": false,
+        "format": "{$2}{$3}{#92}{1}@{host-name}{/host-name}localhost{/}{?client-ip}  {#2}[IP:{client-ip}]{?}  [Login time: {login-time}]"
+      },
+      {
+        "type": "os",
+        "key": "{#92}{$1}│ {#92}OS          {#92}│",
+        "format": "{$2}{$3}{#92}{?pretty-name}{pretty-name}{?}{/pretty-name}{name}{/} {codename}"
+      },
+      {
+        "type": "kernel",
+        "key": "{#92}{$1}│ {#92}Kernel      {#92}│",
+        "format": "{$2}{$3}{#92}{sysname}  {#2}v{release}"
+      },
+      {
+        "type": "terminal",
+        "key": "{#95}{$1}│ {#95}Terminal    {#95}│",
+        "format": "{$2}{$4}{#95}{pretty-name}  {#2}v{version}"
+      },
+      {
+        "type": "terminalfont",
+        "key": "{#95}{$1}│ {#95}Font        {#95}│",
+        "format": "{$2}{$4}{#95}{name}  {#2}{size}"
+      },
+      {
+        "type": "shell",
+        "key": "{#95}{$1}│ {#95}Shell       {#95}│",
+        "format": "{$2}{$4}{#95}{pretty-name}  {#2}{#95}v{version}"
+      },
+      // CUSTOM - Button UI bar
+      {
+        "type": "custom",
+        "key": "{$1}{#95}╰─────────────╯",
+        "format": "{$2}{#95}╰────────────────────────────────────────────────────────────╯",
+      },
+      // CUSTOM - Top UI bar
+      {
+        "type": "custom",
+        "key": "{$1}{#93}╭─────────────╮",
+        "format": "{$2}{#93}╭────────────────────────────────────────────────────────────╮",
+      },
+      {
+        "type": "host",
+        "key": "{#93}{$1}│ {#93}Machine     {#93}│",
+        "format": "{$2}{$3}{#93}{name}  {#2}{version}"
+      },
+      {
+        "type": "cpu",
+        "key": "{#93}{$1}│ {#93}CPU         {#93}│",
+        "showPeCoreCount": true,
+        "temp": true,
+        "format": "{$2}{$3}{#93}{name}  {#2}[C:{core-types}] [{freq-max}]"
+      },
+      {
+        "type": "gpu",
+        "key": "{#93}{$1}│ {#93}GPU         {#93}│",
+        "detectionMethod": "auto",
+        "driverSpecific": true,
+        "format": "{$2}{$3}{#93}{name} {#2}[C:{core-count}]{?frequency} [{frequency}]{?}"
+      },
+      {
+        "type": "memory",
+        "key": "{#93}{$1}│ {#93}Memory      {#93}│",
+        "format": "{$2}{$3}{#93}{used} / {total} ({percentage}{$2})"
+      },
+      {
+        "type": "disk",
+        "key": "{#91}{$1}│ {#91}Disk        {#91}│",
+        "format": "{$2}{$3}{#91}{size-used} / {size-total} ({size-percentage}{$2})"
+      },
+      {
+        "type": "swap",
+        "key": "{#91}{$1}│ {#91}Swap        {#91}│",
+        "format": "{$2}{$3}{#91}{used} / {total} ({percentage}{$2})"
+      },
+      // CUSTOM - Button UI bar
+      {
+        "type": "custom",
+        "key": "{$1}{#91}╰─────────────╯",
+        "format": "{$2}{#91}╰────────────────────────────────────────────────────────────╯",
+      },
+      // CUSTOM - Top UI bar
+      {
+        "type": "custom",
+        "key": "{$1}{#90}╭─────────────╮",
+        "format": "{$2}{#90}╭────────────────────────────────────────────────────────────╮",
+      },
+      {
+            "type": "media",
+            "key": "{#90}{$1}│ ╭ {#72}󰝚 Media   {#90}│",
+	    "keyColor": "38;2;255;0;0",
+	    "format": "{$2}{$3}{#90}{title}"
+        },
+        {
+            "type": "player",
+            "key": "{#90}{$1}│ ├ {#72}󰥠 Player  {#90}│",
+            "keyColor": "38;2;255;0;0",
+            "format": "{$2}{$3}{#90}{player}"
+        },
+//	{
+   //         "type": "command",
+   //         "key": "{#38}{$1}│ ├ {#38}󰏖 OS Age  {#38}│",
+   //         "keyColor": "38;2;255;0;0",
+   //         "text": "birth_install=$(stat -c %W /); current=$(date +%s); time_progression=$((current - birth_install)); Days_difference=$((time_progression / 86400)); echo $Days_difference Days",
+         //   "format": "{$2}{$3}{#38}{?number}{number}"
+ //       },
+      {
+        "type": "uptime",
+        "key": "{#38}{$1}│ {#38}Uptime      {#38}│",
+        "format": "{$2}{$3}{#38}{?days}{days} Days + {?}{hours}:{minutes}:{seconds}"
+      },
+      {
+        "type": "datetime",
+        "key": "{#38}{$1}│ {#38}Datetime    {#38}│",
+        "format": "{$2}{$3}{#38}{year}-{month-pretty}-{day-in-month} {hour-pretty}:{minute-pretty}:{second-pretty}  [{weekday}] [W{week}] [UTC{offset-from-utc}]"
+      },
+      // CUSTOM - Button UI bar
+      {
+        "type": "custom",
+        "key": "{$1}{#38}╰─────────────╯",
+        "format": "{$2}{#38}╰────────────────────────────────────────────────────────────╯",
+      },
+    ]
+  }
