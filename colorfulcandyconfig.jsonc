@@ -30,6 +30,10 @@
     "display": {
       //representation of the percent-bar of disk, memory and swap
            "bar": {
+           "border": {
+           "left": "",
+           "right": "",
+           },
            "char": {
            "elapsed": "▼",
            "total": "△",
