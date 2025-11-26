@@ -146,6 +146,14 @@
           "key": "{#91}{$1}│ ├ 󰋊 {#93}Disk    {#91}│",
           "format": "{$2}{$5}{#91}{size-used} / {size-total} {#2}{size-percentage-bar}{$2}"
         },
+
+        {
+          "type": "disk",
+          "folders": "2TB_Festplatte", // name of your outher disk
+          "key": "{#91}{$1}│ ├ 󰋊 {#93}Disk    {#91}│",
+          "format": "{$2}{$5}{#91}{size-used} / {size-total} {#2}{size-percentage-bar}{$2}"
+        },
+
         {
           "type": "swap",
           "key": "{#91}{$1}│ └ 󰓡 {#93}Swap    {#91}│",
@@ -175,10 +183,12 @@
         },
           //shows weather, location for your city. Somtimes not loading the information then run fasfetch again till it shows up
         {
+    //      "type": "weather",
           "type": "weather",
           "key": "{#90}{$1}│ ├ ☼{#38} Weather {#90}│",
           "location": "Darmstadt", // type in your city
-//        "outputFormat": "%l+%t+(%f)+%c+%C+%w+%h",  //not working correctly for me to get it in the box
+          "outputFormat": "%l+%t+(%f)+%c+%C+%w+%h",
+          "text": "/home/xenomorph/.local/bin/getwttr",   //i followed this instruction https://www.adamsdesk.com/posts/fastfetch-weather-data-cache/#weather-configuration
           "format": "{$2}{$8}{#90}{result}",
           "timeout": 1000
         },
