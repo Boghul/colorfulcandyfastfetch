@@ -9,7 +9,9 @@ Crossed color scheme for font.
 Some changes at some format outputs.
 And build so this colorful theme and ascii art.
 
-<img width="2032" height="1002" alt="candynormal" src="https://github.com/user-attachments/assets/1cecebde-8013-41ed-b584-82e7cbf0f3b1" />
+<img width="2050" height="999" alt="candyupdate" src="https://github.com/user-attachments/assets/8a1b652c-08af-4dd9-b248-fc055fa22392" />
 
 
 Hope you like and share it :)
+
+Changed the weather plugin added seperate disks and customizable percent-bar borders
