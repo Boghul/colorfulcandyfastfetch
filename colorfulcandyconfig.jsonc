@@ -84,23 +84,23 @@
         },
         {
           "type": "users",
-          "key": "{#92}{$1}│ ╭ ☢ {#95}User    {#92}│", //txt in box on the left
+          "key": "{#92}{$1}│ ╭ 󱚢 {#95}User    {#92}│", //txt in box on the left
           "myselfOnly": true,
           "format": "{$2}{$4}{#92}{1}@{host-name}{/host-name}LV426{/}{?client-ip} {#2}[IP:{client-ip}]{?} {#2}[Login time: {login-time}]" //txt in box on the right, change LV426 to your @alias
         },
          {
         // localip IPv4
         "type": "localip",
-        "key": "{#92}{$1}│ ├ 󰩟 {#95}IPv6    {#92}│",
+        "key": "{#92}{$1}│ ├ 󱃅 {#95}IPv6    {#92}│",
         "showPrefixLen": true,
         "showIpv4": false,
         "showIpv6": true,
         "showMtu": true,
-        "format": "{$2}{$4}{#92}{ifname}: {#2}[{ipv6}]"
+        "format": "{$2}{$4}{#92}{ifname}:   {#2}[{ipv6}]"
       },
         {
           "type": "os",
-          "key": "{#92}{$1}│ ├  {#95}OS      {#92}│",
+          "key": "{#92}{$1}│ ├ ☢ {#95}OS      {#92}│",
           "format": "{$2}{$4}{#92}{name} {version-id} {#2}[{variant}]"
         },
         {
@@ -109,24 +109,24 @@
           "format": "{$2}{$4}{#92}v{release} {#2}[{page-size}]"
         },
           {
-            "key": "{$1}{#95}│ ├ {#95} {#92}WM      {#95}│",
+            "key": "{$1}{#95}│ ├ {#95}󱂬 {#92}WM      {#95}│",
             "keyColor": "38;5;44",
             "type": "wm",
             "format": "{$2}{$3}{#95}{pretty-name}{#2}{version} [{protocol-name}]"
         },
         {
           "type": "shell",
-          "key": "{#95}{$1}│ ├  {#92}Shell   {#95}│",
+          "key": "{#95}{$1}│ ├  {#92}Shell   {#95}│",
           "format": "{$2}{$3}{#95}{pretty-name}  {#2}{#95}[v{version}]"
         },
         {
           "type": "terminal",
-          "key": "{#95}{$1}│ ├  {#92}Terminal{#95}│",
+          "key": "{#95}{$1}│ ├  {#92}Terminal{#95}│",
           "format": "{$2}{$3}{#95}{pretty-name}  {#2}[v{version}]"
         },
         {
           "type": "terminalfont",
-          "key": "{#95}{$1}│ └  {#92}Font    {#95}│",
+          "key": "{#95}{$1}│ └ 󰛖 {#92}Font    {#95}│",
           "format": "{$2}{$3}{#95}{name}  {#2}[{size}]"
         },
           // CUSTOM - Button UI bar
@@ -142,7 +142,7 @@
         },
         {
           "type": "host",
-          "key": "{#93}{$1}│ ╭ 󰌢 {#91}Board   {#93}│",
+          "key": "{#93}{$1}│ ╭  {#91}Board   {#93}│",
           "format": "{$2}{$6}{#93}{name}   {#2}[{vendor}]"
         },
         {
@@ -204,28 +204,39 @@
           "keyColor": "38;2;255;0;0",
           "format": "{$2}{$8}{#90}{player}"
         },
+        {
+          "type": "sound",
+          "key": "{#90}{$1}│ ├  {#38}Sound   {#90}│",
+          "keyColor": "38;2;255;0;0",
+          "format": "{$2}{$8}{#90}{name} {#2}{volume-percentage-bar}",
+        },
           //shows weather, location for your city. Somtimes not loading the information then run fasfetch again till it shows up
         {
     //      "type": "weather",
           "type": "weather",
-          "key": "{#90}{$1}│ ├ ☂{#38} Weather {#90}│",
+          "key": "{#90}{$1}│ ├ 󰼲{#38} Weather {#90}│",
           "location": "Darmstadt", // type in your city
           "outputFormat": "%l+%t+(%f)+%c+%C+%w+%h",
           "text": "/home/xenomorph/.local/bin/getwttr",   //i followed this instruction https://www.adamsdesk.com/posts/fastfetch-weather-data-cache/#weather-configuration
           "format": "{$2}{$8}{#90}{result}",
           "timeout": 1000
         },
+        {
+          "type": "packages",
+          "key": "{#38}{$1}│ ├ 󰮯 {#90}Packages{#38}│",
+          "format": "{$2}{$7}{#38}{all} = rpm: {rpm}, + flatpak: {flatpak-all} + snap {snap}"
+        },
           //command for calculating the os age
         {
           "type": "command",
-          "key": "{#38}{$1}│ {#38}├ 󰏖 {#90}OS Age  {#38}│",
-          "keyColor": "38;2;255;0;0",
+          "key": "{#38}{$1}│ {#38}├  {#90}OS Age  {#38}│",
+          "keyColor": "38;2;210;104;11",
           "text": "birth_install=$(stat -c %W /); current=$(date +%s); time_progression=$((current - birth_install)); Days_difference=$((time_progression / 86400)); echo $Days_difference Days",
            "format": "{$2}{$7}{result}"
         },
-        {
+          {
           "type": "uptime",
-          "key": "{#38}{$1}│ ├ 󰅐 {#90}Uptime  {#38}│",
+          "key": "{#38}{$1}│ ├ 󱎫 {#90}Uptime  {#38}│",
           "format": "{$2}{$7}{#38}{?days}{days} Days + {?}{hours}:{minutes}:{seconds}:{milliseconds}"
         },
         {
@@ -246,4 +257,3 @@
         },
     ]
 }
-
