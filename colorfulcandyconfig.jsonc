@@ -12,6 +12,7 @@
 //colors changeable over {#number}
 //darken the output over {#2} (doesnt worked for datetime option)
 //flashing the output {#5} not used here
+//changed the color format to rgb for kitty support
 
 {
     "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
@@ -62,192 +63,205 @@
         // CONSTANT {$2} - COLOR BACKGROUND FOR OUTPUT set to black current
         "\u001b[00;0;0;0;00m",
         // CONSTANT {$3} - VERTICAL BARS AT START AND 75th CHARACTERS FORWARD AND BACKWARD green
-        "\u001b[92m│                                                            │\u001b[60D\u001b[39m",
+        "\u001b[38;2;0;128;0m│                                                            │\u001b[60D\u001b[39m",
         // CONSTANT {$4} - VERTICAL BARS AT START AND 75th CHARACTERS FORWARD AND BACKWARD magenta
-        "\u001b[95m│                                                            │\u001b[60D\u001b[39m",
+        "\u001b[38;2;255;0;255m│                                                            │\u001b[60D\u001b[39m",
         // CONSTANT {$5} - VERTICAL BARS AT START AND 75th CHARACTERS FORWARD AND BACKWARD yellow
-        "\u001b[93m│                                                            │\u001b[60D\u001b[39m",
+        "\u001b[255;255;0m│                                                            │\u001b[60D\u001b[39m",
         // CONSTANT {$6} - VERTICAL BARS AT START AND 75th CHARACTERS FORWARD AND BACKWARD cyan
-        "\u001b[91m│                                                            │\u001b[60D\u001b[39m",
+        "\u001b[38;2;0;255;255m│                                                            │\u001b[60D\u001b[39m",
         // CONSTANT {$7} - VERTICAL BARS AT START AND 75th CHARACTERS FORWARD AND BACKWARD grey
-        "\u001b[90m│                                                            │\u001b[60D\u001b[39m",
+        "\u001b[38;2;128;128;128m│                                                            │\u001b[60D\u001b[39m",
         // CONSTANT {$8} - VERTICAL BARS AT START AND 75th CHARACTERS FORWARD AND BACKWARD orange
-        "\u001b[38m│                                                            │\u001b[60D\u001b[39m",
+        "\u001b[38;2;255;69;0m│                                                            │\u001b[60D\u001b[39m",
+
+         // CONSTANT {$9} - set color orange
+        "\u001b[38;2;255;69;0m",
+         // CONSTANT {$10} - set color grey
+        "\u001b[38;2;128;128;128m",
+        // CONSTANT {$11} - set color cyan
+        "\u001b[38;2;0;255;255m",
+         // CONSTANT {$12} - set color yellow
+        "\u001b[38;2;255;255;0m",
+         // CONSTANT {$13} - set color magenta
+        "\u001b[38;2;255;0;255m",
+        // CONSTANT {$14} - set color green
+        "\u001b[38;2;0;128;0m",
       ]
     },
         "modules": [
           // CUSTOM - Top UI bar
         {
           "type": "custom",
-          "key": "{$1}{#92}╭─────────────╮",
-          "format": "{$2}{#95}╭────────────────────────────────────────────────────────────╮",
+          "key": "{$1}{$14}╭─────────────╮",
+          "format": "{$2}{$13}╭────────────────────────────────────────────────────────────╮",
         },
         {
           "type": "users",
-          "key": "{#92}{$1}│ ╭ 󱚢 {#95}User    {#92}│", //txt in box on the left
+          "key": "{$1}{$14}│ ╭ 󱚢 {$13}User    {$14}│", //txt in box on the left
           "myselfOnly": true,
-          "format": "{$2}{$4}{#92}{1}@{host-name}{/host-name}LV426{/}{?client-ip} {#2}[IP:{client-ip}]{?} {#2}[Login time: {login-time}]" //txt in box on the right, change LV426 to your @alias
+          "format": "{$2}{$4}{$14}{1}@{host-name}{/host-name}LV426{/}{?client-ip} {#2}[IP:{client-ip}]{?} {#2}[Login time: {login-time}]" //txt in box on the right, change LV426 to your @alias
         },
          {
         // localip IPv4
         "type": "localip",
-        "key": "{#92}{$1}│ ├ 󱃅 {#95}IPv6    {#92}│",
+        "key": "{$1}{$14}│ ├ 󱃅 {$13}IPv6    {$14}│",
         "showPrefixLen": true,
         "showIpv4": false,
         "showIpv6": true,
         "showMtu": true,
-        "format": "{$2}{$4}{#92}{ifname}:   {#2}[{ipv6}]"
+        "format": "{$2}{$4}{$14}{ifname}:   {#2}[{ipv6}]"
       },
         {
           "type": "os",
-          "key": "{#92}{$1}│ ├ ☢ {#95}OS      {#92}│",
-          "format": "{$2}{$4}{#92}{name} {version-id} {#2}[{variant}]"
+          "key": "{$1}{$14}│ ├ ☢ {$13}OS      {$14}│",
+          "format": "{$2}{$4}{$14}{name} {version-id} {#2}[{variant}]"
         },
         {
           "type": "kernel",
-          "key": "{#92}{$1}│ ├  {#95}Kernel  {#92}│",
-          "format": "{$2}{$4}{#92}v{release} {#2}[{page-size}]"
+          "key": "{$1}{$14}│ ├  {$13}Kernel  {$14}│",
+          "format": "{$2}{$4}{$14}v{release} {#2}[{page-size}]"
         },
           {
-            "key": "{$1}{#95}│ ├ {#95}󱂬 {#92}WM      {#95}│",
+            "key": "{$1}{$13}│ ├ {$13}󱂬 {$14}WM      {$13}│",
             "keyColor": "38;5;44",
             "type": "wm",
-            "format": "{$2}{$3}{#95}{pretty-name}{#2}{version} [{protocol-name}]"
+            "format": "{$2}{$3}{$13}{pretty-name}{#2}{version} [{protocol-name}]"
         },
         {
           "type": "shell",
-          "key": "{#95}{$1}│ ├  {#92}Shell   {#95}│",
-          "format": "{$2}{$3}{#95}{pretty-name}  {#2}{#95}[v{version}]"
+          "key": "{$1}{$13}│ ├  {$14}Shell   {$13}│",
+          "format": "{$2}{$3}{$13}{pretty-name}  {#2}{$13}[v{version}]"
         },
         {
           "type": "terminal",
-          "key": "{#95}{$1}│ ├  {#92}Terminal{#95}│",
-          "format": "{$2}{$3}{#95}{pretty-name}  {#2}[v{version}]"
+          "key": "{$1}{$13}│ ├  {$14}Terminal{$13}│",
+          "format": "{$2}{$3}{$13}{pretty-name}  {#2}[v{version}]"
         },
         {
           "type": "terminalfont",
-          "key": "{#95}{$1}│ └ 󰛖 {#92}Font    {#95}│",
-          "format": "{$2}{$3}{#95}{name}  {#2}[{size}]"
+          "key": "{$1}{$13}│ └ 󰛖 {$14}Font    {$13}│",
+          "format": "{$2}{$3}{$13}{name} {#2}[{size}]"
         },
           // CUSTOM - Button UI bar
         {
           "type": "custom",
-          "key": "{$1}{#95}╰─────────────╯",
-          "format": "{$2}{#92}╰────────────────────────────────────────────────────────────╯",
+          "key": "{$1}{$13}╰─────────────╯",
+          "format": "{$2}{$14}╰────────────────────────────────────────────────────────────╯",
         },
         {
           "type": "custom",
-          "key": "{$1}{#93}╭─────────────╮",
-          "format": "{$2}{#91}╭────────────────────────────────────────────────────────────╮",
+          "key": "{$1}{$12}╭─────────────╮",
+          "format": "{$2}{$11}╭────────────────────────────────────────────────────────────╮",
         },
         {
           "type": "host",
-          "key": "{#93}{$1}│ ╭  {#91}Board   {#93}│",
-          "format": "{$2}{$6}{#93}{name}   {#2}[{vendor}]"
+          "key": "{$1}{$12}│ ╭  {$11}Board   {$12}│",
+          "format": "{$6}{$2}{$12}{name}   {#2}[{vendor}]"
         },
         {
           "type": "cpu",
-          "key": "{#93}{$1}│ ├  {#91}CPU     {#93}│",
+          "key": "{$12}{$1}│ ├  {$11}CPU     {$12}│",
           "showPeCoreCount": true,
           "temp": true,   //only if supported
-          "format": "{$2}{$6}{#93}{name}  {#2}[C:{core-types}] [{freq-max}]"
+          "format": "{$6}{$2}{$12}{name}  {#2}[C:{core-types}] [{freq-max}]"
         },
         {
           "type": "gpu",
-          "key": "{#93}{$1}│ ├ 󰢮 {#91}GPU     {#93}│",
+          "key": "{$12}{$1}│ ├ 󰢮 {$11}GPU     {$12}│",
           "detectionMethod": "auto",
           "driverSpecific": true,
-          "format": "{$2}{$6}{#93}{name} {#2}[C:{core-count}]{?frequency} [{frequency}]{?}"
+          "format": "{$6}{$2}{$12}{name} {#2}[C:{core-count}]{?frequency} [{frequency}]{?}"
         },
         {
           "type": "memory",
-          "key": "{#93}{$1}│ ├  {#91}Memory  {#93}│",
-          "format": "{$2}{$6}{#93}{used} / {total} {#2}{percentage-bar}{$2}",
+          "key": "{$12}{$1}│ ├  {$11}Memory  {$12}│",
+          "format": "{$6}{$2}{$12}{used} / {total} {#2}{percentage-bar}{$2}",
         },
         {
           "type": "disk",
-          "key": "{#91}{$1}│ ├ 󰋊 {#93}Disk    {#91}│",
-          "format": "{$2}{$5}{#91}{size-used} / {size-total} {#2}{size-percentage-bar}{$2}"
+          "key": "{$11}{$1}│ ├ 󰋊 {$12}Disk    {$11}│",
+          "format": "{$2}{$5}{$11}{size-used} / {size-total} {#2}{size-percentage-bar}"
         },
 
         {
           "type": "disk",
           "folders": "2TB_Festplatte", // name of your outher disk
-          "key": "{#91}{$1}│ ├ 󰋊 {#93}Disk    {#91}│",
-          "format": "{$2}{$5}{#91}{size-used} / {size-total} {#2}{size-percentage-bar}{$2}"
+          "key": "{$11}{$1}│ ├ 󰋊 {$12}Disk    {$11}│",
+          "format": "{$2}{$5}{$11}{size-used} / {size-total} {#2}{size-percentage-bar}"
         },
 
         {
           "type": "swap",
-          "key": "{#91}{$1}│ └ 󰓡 {#93}Swap    {#91}│",
-          "format": "{$2}{$5}{#91}{used} / {total} {#2}{percentage-bar}{$2}"
+          "key": "{$11}{$1}│ └ 󰓡 {$12}Swap    {$11}│",
+          "format": "{$2}{$5}{$11}{used} / {total} {#2}{percentage-bar}"
         },
         {
           "type": "custom",
-          "key": "{$1}{#91}╰─────────────╯",
+          "key": "{$1}{$11}╰─────────────╯",
           "format": "{$2}{#93}╰────────────────────────────────────────────────────────────╯",
         },
         {
           "type": "custom",
-          "key": "{$1}{#90}╭─────────────╮",
-          "format": "{$2}{#38}╭────────────────────────────────────────────────────────────╮",
+          "key": "{$1}{$10}╭─────────────╮",
+          "format": "{$2}{$9}╭────────────────────────────────────────────────────────────╮",
         },
         {
           "type": "media",
-          "key": "{#90}{$1}│ ╭ 󰝚 {#38}Media   {#90}│",
+          "key": "{$10}{$1}│ ╭ 󰝚 {$9}Media   {$10}│",
           "keyColor": "38;2;255;0;0",
-          "format": "{$2}{$8}{#90}{Artist} - {title}"
+          "format": "{$2}{$8}{$10}{Artist} - {title}"
         },
         {
           "type": "player",
-          "key": "{#90}{$1}│ ├ 󰥠 {#38}Player  {#90}│",
+          "key": "{$10}{$1}│ ├ 󰥠 {$9}Player  {$10}│",
           "keyColor": "38;2;255;0;0",
-          "format": "{$2}{$8}{#90}{player}"
+          "format": "{$2}{$8}{$10}{player}"
         },
         {
           "type": "sound",
-          "key": "{#90}{$1}│ ├  {#38}Sound   {#90}│",
+          "key": "{$10}{$1}│ ├  {$9}Sound   {$10}│",
           "keyColor": "38;2;255;0;0",
-          "format": "{$2}{$8}{#90}{name} {#2}{volume-percentage-bar}",
+          "format": "{$2}{$8}{$10}{name} {#2}{volume-percentage-bar}",
         },
           //shows weather, location for your city. Somtimes not loading the information then run fasfetch again till it shows up
         {
     //      "type": "weather",
           "type": "weather",
-          "key": "{#90}{$1}│ ├ 󰼲{#38} Weather {#90}│",
+          "key": "{$10}{$1}│ ├ 󰼲{$9} Weather {$10}│",
           "location": "Darmstadt", // type in your city
           "outputFormat": "%l+%t+(%f)+%c+%C+%w+%h",
           "text": "/home/xenomorph/.local/bin/getwttr",   //i followed this instruction https://www.adamsdesk.com/posts/fastfetch-weather-data-cache/#weather-configuration
-          "format": "{$2}{$8}{#90}{result}",
+          "format": "{$2}{$8}{$10}{result}",
           "timeout": 1000
         },
         {
           "type": "packages",
-          "key": "{#38}{$1}│ ├ 󰮯 {#90}Packages{#38}│",
-          "format": "{$2}{$7}{#38}{all} = rpm: {rpm}, + flatpak: {flatpak-all} + snap {snap}"
+          "key": "{$9}{$1}│ ├ 󰮯 {$10}Packages{$9}│",
+          "format": "{$2}{$7}{$9}{all} = rpm: {rpm}, + flatpak: {flatpak-all} + snap {snap}"
         },
           //command for calculating the os age
         {
           "type": "command",
-          "key": "{#38}{$1}│ {#38}├  {#90}OS Age  {#38}│",
+          "key": "{$9}{$1}│ {$9}├  {$10}OS Age  {$9}│",
           "keyColor": "38;2;210;104;11",
           "text": "birth_install=$(stat -c %W /); current=$(date +%s); time_progression=$((current - birth_install)); Days_difference=$((time_progression / 86400)); echo $Days_difference Days",
-           "format": "{$2}{$7}{result}"
+           "format": "{$2}{$7}{$9}{result}"
         },
           {
           "type": "uptime",
-          "key": "{#38}{$1}│ ├ 󱎫 {#90}Uptime  {#38}│",
-          "format": "{$2}{$7}{#38}{?days}{days} Days + {?}{hours}:{minutes}:{seconds}:{milliseconds}"
+          "key": "{$9}{$1}│ ├ 󱎫 {$10}Uptime  {$9}│",
+          "format": "{$2}{$7}{$9}{?days}{days} Days + {?}{hours}:{minutes}:{seconds}:{milliseconds}"
         },
         {
           "type": "datetime",
-          "key": "{#38}{$1}│ └ 󰅐 {#90}Date    {#38}│",
-          "format": "{$2}{$7}{#38}{year}-{month-pretty}-{day-in-month} {hour-pretty}:{minute-pretty}:{second-pretty}  {weekday} W{week} UTC{offset-from-utc}"
+          "key": "{$9}{$1}│ └ 󰅐 {#90}Date    {$9}│",
+          "format": "{$2}{$7}{$9}{year}-{month-pretty}-{day-in-month} {hour-pretty}:{minute-pretty}:{second-pretty}  {weekday} W{week} UTC{offset-from-utc}"
         },
         {
           "type": "custom",
-          "key": "{$1}{#38}╰─────────────╯",
-          "format": "{$2}{#90}╰────────────────────────────────────────────────────────────╯",
+          "key": "{$1}{$9}╰─────────────╯",
+          "format": "{$2}{$10}╰────────────────────────────────────────────────────────────╯",
         },
           //show colorful symbols
         {
