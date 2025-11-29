@@ -91,12 +91,12 @@
          {
         // localip IPv4
         "type": "localip",
-        "key": "{#92}{$1}│ ├ 󰩟 {#95}IPv4    {#92}│",
+        "key": "{#92}{$1}│ ├ 󰩟 {#95}IPv6    {#92}│",
         "showPrefixLen": true,
-        "showIpv4": true,
-        "showIpv6": false,
+        "showIpv4": false,
+        "showIpv6": true,
         "showMtu": true,
-        "format": "{$2}{$4}{#92}{ifname}: {ipv4}{#2}[MTU:{mtu}]"
+        "format": "{$2}{$4}{#92}{ifname}: {#2}[{ipv6}]"
       },
         {
           "type": "os",
