@@ -11,15 +11,15 @@
     "logo": {
 	    "type": "auto",
            //set dir to picture or txt file
-           "source": "/home/xenomorph/Bilder/candy3.txt",
+           "source": "/home/xenomorph/Bilder/Xeno.txt",
            "padding": {
-           "top": 2,
+           "top": 0,
            "left": 2,
            "right": 6,
            },
            //change the color from the ascii art
            "color": {
-           "1": "magenta",
+           "1": "#185708",
            "2": "#fa435a",
            "3": "cyan",
            "4": "green",
@@ -77,10 +77,20 @@
         },
         {
           "type": "users",
-          "key": "{#92}{$1}│ ╭  {#95}User    {#92}│", //txt in box on the left
+          "key": "{#92}{$1}│ ╭ ☢ {#95}User    {#92}│", //txt in box on the left
           "myselfOnly": true,
           "format": "{$2}{$4}{#92}{1}@{host-name}{/host-name}LV426{/}{?client-ip} {#2}[IP:{client-ip}]{?} {#2}[Login time: {login-time}]" //txt in box on the right, change LV426 to your @alias
         },
+         {
+        // localip IPv4
+        "type": "localip",
+        "key": "{#92}{$1}│ ├ 󰩟 {#95}IPv4    {#92}│",
+        "showPrefixLen": true,
+        "showIpv4": true,
+        "showIpv6": false,
+        "showMtu": true,
+        "format": "{$2}{$4}{#92}{ifname}: {ipv4}{#2}[MTU:{mtu}]"
+      },
         {
           "type": "os",
           "key": "{#92}{$1}│ ├  {#95}OS      {#92}│",
@@ -90,6 +100,12 @@
           "type": "kernel",
           "key": "{#92}{$1}│ ├  {#95}Kernel  {#92}│",
           "format": "{$2}{$4}{#92}v{release} {#2}[{page-size}]"
+        },
+          {
+            "key": "{$1}{#95}│ ├ {#95} {#92}WM      {#95}│",
+            "keyColor": "38;5;44",
+            "type": "wm",
+            "format": "{$2}{$3}{#95}{pretty-name}{#2}{version} [{protocol-name}]"
         },
         {
           "type": "shell",
@@ -185,7 +201,7 @@
         {
     //      "type": "weather",
           "type": "weather",
-          "key": "{#90}{$1}│ ├ ☼{#38} Weather {#90}│",
+          "key": "{#90}{$1}│ ├ ☂{#38} Weather {#90}│",
           "location": "Darmstadt", // type in your city
           "outputFormat": "%l+%t+(%f)+%c+%C+%w+%h",
           "text": "/home/xenomorph/.local/bin/getwttr",   //i followed this instruction https://www.adamsdesk.com/posts/fastfetch-weather-data-cache/#weather-configuration
