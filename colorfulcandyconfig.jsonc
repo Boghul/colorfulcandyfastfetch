@@ -1,7 +1,14 @@
+//__________              .__          .__
+//\______   \ ____   ____ |  |__  __ __|  |
+// |    |  _//  _ \ / ___\|  |  \|  |  \  |
+// |    |   (  <_> ) /_/  >   Y  \  |  /  |__
+// |______  /\____/\___  /|___|  /____/|____/
+//        \/      /_____/      \/
+//
+// https://github.com/Boghul?tab=repositories
 // Original layout  https://github.com/jan-rex/my-fastfetch-config by jan-rex
 // Modified from: https://github.com/fastfetch-cli/fastfetch/blob/dev/presets/examples/24.jsonc by CarterLi
 // Modified, colorized, media, player, weather, os age, percent-bar, symbols... by Boghul 2025-11-23
-// https://github.com/Boghul?tab=repositories
 //colors changeable over {#number}
 //darken the output over {#2} (doesnt worked for datetime option)
 //flashing the output {#5} not used here
@@ -135,7 +142,7 @@
         },
         {
           "type": "host",
-          "key": "{#93}{$1}│ ╭ 󰌢 {#91}Machine {#93}│",
+          "key": "{#93}{$1}│ ╭ 󰌢 {#91}Board   {#93}│",
           "format": "{$2}{$6}{#93}{name}   {#2}[{vendor}]"
         },
         {
@@ -239,3 +246,4 @@
         },
     ]
 }
+
