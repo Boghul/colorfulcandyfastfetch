@@ -67,7 +67,7 @@
         // CONSTANT {$4} - VERTICAL BARS AT START AND 75th CHARACTERS FORWARD AND BACKWARD magenta
         "\u001b[38;2;255;0;255m│                                                            │\u001b[60D\u001b[39m",
         // CONSTANT {$5} - VERTICAL BARS AT START AND 75th CHARACTERS FORWARD AND BACKWARD yellow
-        "\u001b[255;255;0m│                                                            │\u001b[60D\u001b[39m",
+        "\u001b[38;2;255;255;0m│                                                            │\u001b[60D\u001b[39m",
         // CONSTANT {$6} - VERTICAL BARS AT START AND 75th CHARACTERS FORWARD AND BACKWARD cyan
         "\u001b[38;2;0;255;255m│                                                            │\u001b[60D\u001b[39m",
         // CONSTANT {$7} - VERTICAL BARS AT START AND 75th CHARACTERS FORWARD AND BACKWARD grey
